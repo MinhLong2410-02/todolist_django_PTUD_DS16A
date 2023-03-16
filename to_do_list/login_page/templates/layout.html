@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minh Long 's TODOLIST</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static './css/login.css' %}">
+    <link rel="stylesheet" href="{% static './css/transition.css' %}">
+
+</head>
+<body>
+  <header>
+      <h1>TODOLIST</h1>
+  </header>
+  <main class = "page-transition">
+      {% block content %}
+        {% endblock %}
+  </main>
+  <footer>
+      <p>2023@<a href="#">MinhLong&trade;</a></p>
+  </footer>
+
+  <script>
+    const link = document.querySelector("a[href]");
+    console.log(link);
+    link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const target = event.currentTarget.getAttribute("href");
+        document.body.classList.add("out");
+        setTimeout(() => {
+        window.location.href = target;
+        }, 500);
+    });
+
+    window.addEventListener("pageshow", (event) => {
+    if (event.persisted) {
+        document.body.classList.remove("out");
+    }
+    });
+
+</script>
+</body>
+</html>
